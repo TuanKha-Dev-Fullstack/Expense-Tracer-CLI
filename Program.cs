@@ -32,6 +32,7 @@ public static class Program
             case CommandManager.Delete:
                 break;
             case CommandManager.Summary:
+                ExpensiveController.Summary(commandParts);
                 break;
             case CommandManager.Help:
                 break;

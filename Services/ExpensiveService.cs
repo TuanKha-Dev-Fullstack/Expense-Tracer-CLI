@@ -121,4 +121,15 @@ public static class ExpensiveService
         }
         Console.WriteLine();
     }
+
+    public static void Summary(string?[] commandParts)
+    {
+        if (commandParts.Length != 1)
+            Console.WriteLine(Message.InputErrorMessage);
+        else
+        {
+            var totalAmount = Expenses.Sum(expense => expense.Amount);
+            Console.WriteLine(Message.SummaryMessage(totalAmount));
+        }
+    }
 }

@@ -13,4 +13,9 @@ public static class Message
     {
         return $"Expense added successfully (ID: {itemId})\n";
     }
+
+    public static string SummaryMessage(decimal amount)
+    {
+        return $"Total expenses: {amount:C0} \n";
+    }
 }
