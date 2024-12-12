@@ -41,6 +41,30 @@ public static class ExpensiveService
         else
             DisplayList(Expenses);
     }
+    
+    public static void Summary(string?[] commandParts)
+    {
+        switch (commandParts.Length)
+        {
+            case 1:
+            {
+                var totalAmount = Expenses.Sum(expense => expense.Amount);
+                Console.WriteLine(Message.SummaryMessage(totalAmount));
+                break;
+            }
+            case 3 when commandParts[1] == Flags.Month && short.TryParse(commandParts[2], out var month):
+            {
+                var totalAmount = Expenses
+                    .Where(expense => expense.Date.Month == month && expense.Date.Year == DateTime.Now.Year)
+                    .Sum(expense => expense.Amount);
+                Console.WriteLine(Message.SummaryMonthlyMessage(totalAmount, month));
+                break;
+            }
+            default:
+                Console.WriteLine(Message.InputErrorMessage);
+                break;
+        }
+    }
 
     private static void AddNew(string description, decimal amount)
     {
@@ -120,16 +144,5 @@ public static class ExpensiveService
                 $"{expense.Amount.ToString("C0").PadRight(amountWidth)}");
         }
         Console.WriteLine();
-    }
-
-    public static void Summary(string?[] commandParts)
-    {
-        if (commandParts.Length != 1)
-            Console.WriteLine(Message.InputErrorMessage);
-        else
-        {
-            var totalAmount = Expenses.Sum(expense => expense.Amount);
-            Console.WriteLine(Message.SummaryMessage(totalAmount));
-        }
     }
 }

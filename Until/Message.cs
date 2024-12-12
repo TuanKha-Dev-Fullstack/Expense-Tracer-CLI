@@ -1,4 +1,6 @@
-﻿namespace Expense_Tracer_CLI.Until;
+﻿using System.Globalization;
+
+namespace Expense_Tracer_CLI.Until;
 
 public static class Message
 {
@@ -17,5 +19,11 @@ public static class Message
     public static string SummaryMessage(decimal amount)
     {
         return $"Total expenses: {amount:C0} \n";
+    }
+    
+    public static string SummaryMonthlyMessage(decimal amount, short month)
+    {
+        var monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+        return $"Total expenses for {monthName}: {amount:C0} \n";
     }
 }
