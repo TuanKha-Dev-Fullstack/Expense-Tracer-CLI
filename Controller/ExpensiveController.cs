@@ -2,9 +2,9 @@
 
 namespace Expense_Tracer_CLI.Controller;
 
-public class ExpensiveController
+public static class ExpensiveController
 {
-    private readonly ExpensiveService _expensiveService = new();
+    public static void Add(string?[] commandParts) => ExpensiveService.Add(commandParts);
 
-    public void Add(string?[] commandParts) => _expensiveService.Add(commandParts);
+    public static void List(string?[] commandParts) => ExpensiveService.List(commandParts);
 }

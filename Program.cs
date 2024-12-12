@@ -5,7 +5,6 @@ namespace Expense_Tracer_CLI;
 
 public static class Program
 {
-    private static readonly ExpensiveController ExpensiveController = new();
     private static void Main()
     {
         Console.WriteLine(Message.TitleProgram);
@@ -28,6 +27,7 @@ public static class Program
                 ExpensiveController.Add(commandParts);
                 break;
             case CommandManager.List:
+                ExpensiveController.List(commandParts);
                 break;
             case CommandManager.Delete:
                 break;

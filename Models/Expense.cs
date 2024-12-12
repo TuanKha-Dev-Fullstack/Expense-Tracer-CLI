@@ -3,7 +3,7 @@
 public class Expense
 {
     public int Id { get; init; }
-    public string? Description { get; set; }
-    public decimal Amount { get; set; }
-    public DateTime Date { get; set; }
+    public required string Description { get; init; }
+    public decimal Amount { get; init; }
+    public DateTime Date { get; init; }
 }
