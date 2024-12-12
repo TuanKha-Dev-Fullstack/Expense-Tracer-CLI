@@ -66,6 +66,26 @@ public static class ExpensiveService
         }
     }
 
+    public static void Delete(string?[] commandParts)
+    {
+        if (commandParts is not [_, Flags.Id, var idParam] || !int.TryParse(idParam, out var id))
+        {
+            Console.WriteLine(Message.InputErrorMessage);
+            return;
+        }
+        var expense = Expenses.FirstOrDefault(expense => expense.Id == id);
+        if (expense != null)
+        {
+            Expenses.Remove(expense);
+            JsonService.SaveExpensive(Expenses);
+            Console.WriteLine(Message.DeleteSuccess);
+        }
+        else
+        {
+            Console.WriteLine(Message.ItemNotFound(id));
+        }
+    }
+
     private static void AddNew(string description, decimal amount)
     {
         try

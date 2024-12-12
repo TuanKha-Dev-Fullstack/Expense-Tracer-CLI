@@ -9,4 +9,6 @@ public static class ExpensiveController
     public static void List(string?[] commandParts) => ExpensiveService.List(commandParts);
 
     public static void Summary(string?[] commandParts) => ExpensiveService.Summary(commandParts);
+    
+    public static void Delete(string?[] commandParts) => ExpensiveService.Delete(commandParts);
 }

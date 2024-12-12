@@ -10,7 +10,7 @@ public static class Message
     public const string ExceptionMessage = "\nAn error occurred, please try again. If the error persists, please contact support.\n";
     public const string WrongCommand = "Wrong command. Use \"help\" for more information.\n";
     public const string ValidationAddErrorMessage = "Error: The amount cannot be negative, and the description cannot be empty. Please try again.\n";
-    
+    public const string DeleteSuccess = "Expense deleted successfully.\n";
     public static string ItemAddedSuccessfully(int itemId)
     {
         return $"Expense added successfully (ID: {itemId})\n";
@@ -25,5 +25,10 @@ public static class Message
     {
         var monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
         return $"Total expenses for {monthName}: {amount:C0} \n";
+    }
+
+    public static string ItemNotFound(int id)
+    {
+        return $"Expense with ID {id} not found.\n";
     }
 }

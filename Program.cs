@@ -30,6 +30,7 @@ public static class Program
                 ExpensiveController.List(commandParts);
                 break;
             case CommandManager.Delete:
+                ExpensiveController.Delete(commandParts);
                 break;
             case CommandManager.Summary:
                 ExpensiveController.Summary(commandParts);
